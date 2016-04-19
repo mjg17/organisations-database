@@ -6,22 +6,42 @@ export default class LokiPersist {
     }
 
     load() {
-        return new Promise( (resolve, reject) => {
-            this.db.loadDatabase({}, resolve); 
+        console.log('lp.load entered');
+        let p = new Promise( (resolve, reject) => {
+            console.log('lp.load promise started');
+            this.db.loadDatabase({}, () => {
+                resolve(); 
+                console.log('lp.load promise resolved');
+            }); 
         });
+        console.log('lp.load returning promise object');
+        return p;
     }
     
     save() {
-        return new Promise( (resolve, reject) => {
-            this.db.saveDatabase(resolve);
-        })
+        console.log('lp.save entered');
+        let p = new Promise( (resolve, reject) => {
+            console.log('lp.save promise started');
+            this.db.saveDatabase(() => {
+                resolve(); 
+                console.log('lp.save promise resolved');
+            });
+        });
+        console.log('lp.save returning promise object');
+        return p;
     }
     
     persist(action) {
+        console.log('lp.persist entered');
         let result;
-        return this.load()
+
+        let p = this.load()
                 .then( () => { result = action(this.db) } )
                 .then( () => this.save() )
-                .then( () => result )
+                .then( () => console.log('lp.persist about to resolve promise chain with result') )
+                .then( () => result );
+
+        console.log('lp.persist returning promise chain');
+        return p;
     }
 }
