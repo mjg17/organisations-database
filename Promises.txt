@@ -1,0 +1,16 @@
+Horrible tangle
+http://exploringjs.com/es6/ch_promises.html
+    25.5.2 XMLHttpRequest
+    25.4.2 states of a promise
+    25.4.3 consuming a promise
+organisations.js
+lokiPersist.js
+    - nice clean chain
+    - arrow functions (this scoping)
+storeLokiPersist.js
+* run it!
+* checkout instrumented version
+lokiPersist.js
+storeLokiPersist.js
+* run it!
+what's next? - combining organisations.js and lokiPersist.js
