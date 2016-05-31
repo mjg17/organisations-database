@@ -4,6 +4,7 @@
   "description": "Bristol Local Business Directory",
   "scripts": {
     "start": "node server.js",
+    "start:backend": "babel-node backend/server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
